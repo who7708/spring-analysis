@@ -1,7 +1,5 @@
 package annotation;
 
-import org.springframework.beans.factory.annotation.Configurable;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

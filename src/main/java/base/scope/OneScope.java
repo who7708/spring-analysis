@@ -5,8 +5,7 @@ import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 
 /**
- * {@link org.springframework.beans.factory.config.Scope}简单实现，每调用一次变返回一个
- * 新的对象.
+ * {@link org.springframework.beans.factory.config.Scope}简单实现，每调用一次变返回一个 新的对象.
  *
  * @author skywalker
  */

@@ -11,7 +11,8 @@ import org.aspectj.lang.annotation.Pointcut;
 public class AspectDemo {
 
     @Pointcut("execution(void base.aop.AopDemo.send(..))")
-    public void beforeSend() {}
+    public void beforeSend() {
+    }
 
     @Before("beforeSend()")
     public void before() {
