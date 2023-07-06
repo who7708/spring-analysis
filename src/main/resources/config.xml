@@ -5,14 +5,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean id="simpleMethodInterceptor" class="aop.SimpleMethodInterceptor"/>
+    <bean id="simpleMethodInterceptor" class="org.spring.aop.SimpleMethodInterceptor"/>
 
-    <bean class="aop.SimpleAopBean"/>
+    <bean class="org.spring.aop.SimpleAopBean"/>
 
     <!-- expose-proxy=true是才能使用AopContext.getCurrentProxy() 获取到当前代理类 -->
     <aop:config expose-proxy="true">
-        <!--<aop:config>-->
-        <aop:advisor advice-ref="simpleMethodInterceptor" pointcut="execution(* aop.SimpleAopBean.*(..))"/>
+        <!--<org.spring.aop:config>-->
+        <aop:advisor advice-ref="simpleMethodInterceptor" pointcut="execution(* org.spring.aop.SimpleAopBean.*(..))"/>
     </aop:config>
 
 </beans>
