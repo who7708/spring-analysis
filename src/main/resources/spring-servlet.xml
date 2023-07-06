@@ -10,7 +10,7 @@
             http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd ">
 
-    <context:component-scan base-package="controller"/>
+    <context:component-scan base-package="org.spring.controller"/>
     <mvc:annotation-driven/>
     <!-- 启用对静态资源使用默认servlet处理，非REST方式不需要 -->
     <mvc:default-servlet-handler/>
