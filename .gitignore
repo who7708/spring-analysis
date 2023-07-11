@@ -13,3 +13,5 @@ target/
 hs_err_pid*
 /.idea/
 /spring.iml
+
+build/
