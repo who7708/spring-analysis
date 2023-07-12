@@ -13,9 +13,7 @@ import org.spring.model.UserFor12306;
 import org.spring.syncdbtoredis.ConnectUtils;
 import redis.clients.jedis.ClusterPipeline;
 import redis.clients.jedis.HostAndPort;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
-import redis.clients.jedis.Pipeline;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,7 +30,7 @@ import java.util.concurrent.CompletableFuture;
  * @version 1.0.0
  * @since 2023-07-11
  */
-public class TestDBUtils {
+public class TestForRedis {
 
     /**
      * 单机使用redis
@@ -78,43 +76,6 @@ public class TestDBUtils {
         // 使用 pipelined 大概 3s
     }
 
-    /**
-     * 单机使用redis
-     */
-    @Test
-    public void test1() throws SQLException {
-        System.out.println("===== test1 =====");
-        Connection conn = ConnectUtils.connect();
-        long start = System.currentTimeMillis();
-        List<UserFor12306> allUserFor12306List = queryForList(conn, 2000);
-        // 大概1s可以加载全部数据
-        System.out.println("从mysql中加载数据耗时：" + (System.currentTimeMillis() - start));
-        System.out.println(allUserFor12306List.size());
-
-        Jedis jedis = new Jedis("192.168.1.5", 6379);
-        jedis.auth("123456");
-        System.out.println(jedis.get("k1"));
-        start = System.currentTimeMillis();
-        Lists.partition(allUserFor12306List, 20000)
-                .stream()
-                .map(userFor12306List -> CompletableFuture.runAsync(() -> {
-                            // userFor12306List.forEach(u ->
-                            //         jedis.set(u.getIdNumber(), JSON.toJSONString(u))
-                            // );
-
-                            Pipeline pipelined = jedis.pipelined();
-                            userFor12306List.forEach(u ->
-                                    pipelined.set(u.getIdNumber(), JSON.toJSONString(u))
-                            );
-                            pipelined.sync();
-                        })
-                ).forEach(CompletableFuture::join);
-        System.out.println("finish sync to redis");
-        System.out.println("写入redis耗时：" + (System.currentTimeMillis() - start));
-        // 使用set 大概38s
-        // 使用 pipelined 大概 3s
-    }
-
     private List<UserFor12306> queryForList(Connection conn, int limit) throws SQLException {
         QueryRunner totalRunner = new QueryRunner();
         Long totalFromDb = totalRunner.query(conn, "select count(*) from 12306_user", new ScalarHandler<>());
@@ -147,4 +108,5 @@ public class TestDBUtils {
         columnsToFieldsMap.put("password", "passwd");
         return columnsToFieldsMap;
     }
+
 }
