@@ -65,9 +65,9 @@ public class TestForCsdn {
 
         System.out.println(jedis.get("key1"));
         start = System.currentTimeMillis();
-        Lists.partition(allUserForCsdnList, 20000)
+        ClusterPipeline pipelined = jedis.pipelined();
+        Lists.partition(allUserForCsdnList, 2000)
                 .forEach(userForCsdnList -> {
-                    ClusterPipeline pipelined = jedis.pipelined();
                     userForCsdnList.forEach(u ->
                             pipelined.set(u.getLoginId(), JSON.toJSONString(u))
                     );
@@ -97,6 +97,7 @@ public class TestForCsdn {
         jedis.select(1);
         System.out.println(jedis.get("k1"));
         start = System.currentTimeMillis();
+        Pipeline pipelined = jedis.pipelined();
         Lists.partition(allUserForCsdnList, 20000)
                 .stream()
                 .map(userForCsdnList -> CompletableFuture.runAsync(() -> {
@@ -104,7 +105,6 @@ public class TestForCsdn {
                             //         jedis.set(u.getIdNumber(), JSON.toJSONString(u))
                             // );
 
-                            Pipeline pipelined = jedis.pipelined();
                             userForCsdnList.forEach(u ->
                                     pipelined.set(u.getLoginId(), JSON.toJSONString(u))
                             );

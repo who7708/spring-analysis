@@ -46,6 +46,7 @@ public class TestFor12306 {
         jedis.auth("123456");
         System.out.println(jedis.get("k1"));
         start = System.currentTimeMillis();
+        Pipeline pipelined = jedis.pipelined();
         Lists.partition(allUserFor12306List, 20000)
                 .stream()
                 .map(userFor12306List -> CompletableFuture.runAsync(() -> {
@@ -53,7 +54,6 @@ public class TestFor12306 {
                             //         jedis.set(u.getIdNumber(), JSON.toJSONString(u))
                             // );
 
-                            Pipeline pipelined = jedis.pipelined();
                             userFor12306List.forEach(u ->
                                     pipelined.set(u.getIdNumber(), JSON.toJSONString(u))
                             );

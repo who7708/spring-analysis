@@ -56,6 +56,7 @@ public class TestForRedis {
 
         System.out.println(jedis.get("key1"));
         start = System.currentTimeMillis();
+        ClusterPipeline pipelined = jedis.pipelined();
         Lists.partition(allUserFor12306List, 20000)
                 .stream()
                 .map(userFor12306List -> CompletableFuture.runAsync(() -> {
@@ -63,7 +64,6 @@ public class TestForRedis {
                             //         jedis.set(u.getIdNumber(), JSON.toJSONString(u))
                             // );
 
-                            ClusterPipeline pipelined = jedis.pipelined();
                             userFor12306List.forEach(u ->
                                     pipelined.set(u.getIdNumber(), JSON.toJSONString(u))
                             );
