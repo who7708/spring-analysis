@@ -11,15 +11,20 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.junit.Test;
 import org.spring.model.UserFor12306;
 import org.spring.syncdbtoredis.ConnectUtils;
+import redis.clients.jedis.ClusterPipeline;
+import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.Pipeline;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -28,6 +33,50 @@ import java.util.concurrent.CompletableFuture;
  * @since 2023-07-11
  */
 public class TestDBUtils {
+
+    /**
+     * 单机使用redis
+     */
+    @Test
+    public void testRedisCluster() throws SQLException {
+        System.out.println("===== test1 =====");
+        Connection conn = ConnectUtils.connect();
+        long start = System.currentTimeMillis();
+        List<UserFor12306> allUserFor12306List = queryForList(conn, 2000);
+        // 大概1s可以加载全部数据
+        System.out.println("从mysql中加载数据耗时：" + (System.currentTimeMillis() - start));
+        System.out.println(allUserFor12306List.size());
+
+        Set<HostAndPort> nodes = new HashSet<>();
+        nodes.add(new HostAndPort("192.168.1.5", 7000));
+        nodes.add(new HostAndPort("192.168.1.5", 7001));
+        nodes.add(new HostAndPort("192.168.1.5", 7002));
+        nodes.add(new HostAndPort("192.168.1.5", 8000));
+        nodes.add(new HostAndPort("192.168.1.5", 8001));
+        nodes.add(new HostAndPort("192.168.1.5", 8002));
+        JedisCluster jedis = new JedisCluster(nodes);
+
+        System.out.println(jedis.get("key1"));
+        start = System.currentTimeMillis();
+        Lists.partition(allUserFor12306List, 20000)
+                .stream()
+                .map(userFor12306List -> CompletableFuture.runAsync(() -> {
+                            // userFor12306List.forEach(u ->
+                            //         jedis.set(u.getIdNumber(), JSON.toJSONString(u))
+                            // );
+
+                            ClusterPipeline pipelined = jedis.pipelined();
+                            userFor12306List.forEach(u ->
+                                    pipelined.set(u.getIdNumber(), JSON.toJSONString(u))
+                            );
+                            pipelined.sync();
+                        })
+                ).forEach(CompletableFuture::join);
+        System.out.println("finish sync to redis cluster");
+        System.out.println("写入redis耗时：" + (System.currentTimeMillis() - start));
+        // 使用set 大概38s
+        // 使用 pipelined 大概 3s
+    }
 
     /**
      * 单机使用redis
