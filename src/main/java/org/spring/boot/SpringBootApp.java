@@ -35,6 +35,11 @@ public class SpringBootApp {
         // app.run(args);
 
         SpringApplication.run(SpringBootApp.class, args);
+
+        // // 动态修改日志级别
+        // LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
+        // loggerContext.getLogger("ROOT").setLevel(Level.DEBUG);
+        // loggerContext.getLogger("org.spring.boot").setLevel(Level.DEBUG);
     }
 
     @Bean
