@@ -11,6 +11,14 @@ import java.util.Timer;
  */
 public class TestOutOfMemory {
 
+    // -ea
+    // -Xms100m
+    // -Xmx100m
+    // -XX:+UseG1GC
+    // -XX:MaxGCPauseMillis=200
+    // -XX:+HeapDumpOnOutOfMemoryError
+    // -Dfile.encoding=UTF-8
+    // 或执行：  jmap：jmap -dump:format=b,file=<filename.hprof> <pid>； 手动生成dump文件
     @Test
     public void testForOOM() throws InterruptedException {
         System.out.println("===== testForOOM =====");

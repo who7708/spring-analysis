@@ -11,7 +11,7 @@ class MyOutOfMemoryTask extends TimerTask {
         Map<String, Object> m = new HashMap<>();
         int i = 0;
         do {
-            byte[] bytes = new byte[1000 * 1000];
+            byte[] bytes = new byte[1024 * 1024];
             m.put(String.valueOf(i), bytes);
             i++;
         } while (i < 100000);
