@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.spring.model.AhutStudentModel;
 import org.spring.syncdbtoredis.ConnectUtils;
 
+import javax.sql.DataSource;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class TestForAhutStudent {
     @Test
-    public void test1() throws InterruptedException {
+    public void testByConnection() throws InterruptedException {
         System.out.println("===== test1 =====");
         // EasyExcel.read(new File("D:\\data\\excel\\10-12-1507231711433237.xlsx"), AhutStudentModel.class, new ReadListener<AhutStudentModel>() {
         //     @Override
@@ -40,6 +41,35 @@ public class TestForAhutStudent {
         EasyExcel.read(new File("D:\\data\\2009计算机新生高考成绩.xls"), AhutStudentModel.class,
                 new PageReadListener<AhutStudentModel>(dataList -> {
                     QueryRunner insertRunner = new QueryRunner();
+                    for (AhutStudentModel data : dataList) {
+                        System.out.println(data);
+                        // insertRunner.insertBatch(conn, sql, new ScalarHandler<Integer>(), );
+                        try {
+                            insertRunner.insert(conn, sql, new ScalarHandler<Integer>(), data.getStudentNo(), data.getName(),
+                                    data.getSex(), data.getAwardRecord(), data.getChinese(), data.getMath(), data.getEnglish(),
+                                    data.getComprehensive(), data.getTotal());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }))
+                .sheet()
+                .headRowNumber(1)
+                .doRead();
+
+        System.out.println("hello");
+        TimeUnit.SECONDS.sleep(100);
+    }
+
+    @Test
+    public void testByDataSource() throws Exception {
+        System.out.println("===== test1 =====");
+        String sql = "insert into ahut_student(student_no, name, sex, award_record, chinese, math, english, comprehensive, total) values(?,?,?,?,?,?,?,?,?)";
+        DataSource ds = ConnectUtils.getDataSource();
+        Connection conn = ds.getConnection();
+        EasyExcel.read(new File("D:\\data\\2009计算机新生高考成绩.xls"), AhutStudentModel.class,
+                new PageReadListener<AhutStudentModel>(dataList -> {
+                    QueryRunner insertRunner = new QueryRunner(ds);
                     for (AhutStudentModel data : dataList) {
                         System.out.println(data);
                         // insertRunner.insertBatch(conn, sql, new ScalarHandler<Integer>(), );
