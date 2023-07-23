@@ -1,4 +1,6 @@
-package org.spring.boot.test;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * @author Chris
@@ -12,7 +14,9 @@ public class TestCpu {
 
     private static void cpu() {
         while (true) {
-            System.out.println("666");
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateStr = format.format(System.currentTimeMillis());
+            System.out.println("当前时间：" + dateStr);
         }
     }
 }
@@ -23,3 +27,5 @@ public class TestCpu {
 // 再通过 jstack 搜索到些线程对应的堆栈信息，即可找到占用cpu过高的代码信息 jstack <pid> | grep <十六进制> -A20
 
 // 同样也可以使用 arthas 查询 thread 列表，查看占用cpu过高的 id，然后再使用 thread <id> 查堆栈信息即可
+
+
