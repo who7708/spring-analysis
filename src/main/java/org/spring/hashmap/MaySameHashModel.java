@@ -8,6 +8,9 @@ import org.apache.commons.lang3.RandomUtils;
  * @since 2023-07-25
  */
 public class MaySameHashModel {
+    private static final int mode1 = 11;
+    private final int mode2 = 22;
+    private static int mode3;
 
     private int id;
     private String name;

@@ -49,4 +49,25 @@ public class TestHashMap {
         String aa = map.get(maySameHashModel);
         System.out.println(aa);
     }
+
+    /**
+     * static final 变量：必须初始化一个值 final 变量：必须初始化一个值，可以直接赋值也可以在构造方法中赋值 static 变量：可以不初始化，但是有默认值
+     *
+     * 那么static final和final 又有何区别呢？
+     * static修饰的属性强调它是只有一个，被所有对象所共享。
+     * final修饰的属性表明是一个常数（创建后不能被修改）。
+     * static final修饰的属性表示一旦给定值（常数），就不可修改，并且可以通过类名访问（因为只有一个）。
+     */
+    @Test
+    public void test3() throws Exception {
+        System.out.println("===== test3 =====");
+        MaySameHashModel model = new MaySameHashModel();
+        Field a = MaySameHashModel.class.getDeclaredField("mode1");
+        // Field a = MaySameHashModel.class.getDeclaredField("mode2");
+        // Field a = MaySameHashModel.class.getDeclaredField("mode3");
+        a.setAccessible(true);
+        System.out.println("反射修改前：" + a.get(model));
+        a.setInt(model, 3);
+        System.out.println("反射修改后：" + a.get(model));
+    }
 }
