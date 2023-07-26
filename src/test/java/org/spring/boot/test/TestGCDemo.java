@@ -15,3 +15,5 @@ public class TestGCDemo {
     }
 }
 // java -Xms20m -Xmx20m -Xmn10M -XX:SurvivorRatio=2 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps TestGCDemo
+// java -verbose:gc -Xms20m -Xmx20m -Xmn10m -XX:+UseG1GC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+HeapDumpOnOutOfMemoryError TestOOM
+// java -verbose:gc -Xms20m -Xmx20m -Xmn10m -XX:+UseConcMarkSweepGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+HeapDumpOnOutOfMemoryError TestOOM
