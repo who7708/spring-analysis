@@ -14,6 +14,7 @@ public class TestOutOfMemory {
     // -ea
     // -Xms100m
     // -Xmx100m
+    // -Xmn50m
     // -XX:+UseG1GC
     // -XX:MaxGCPauseMillis=200
     // -XX:+HeapDumpOnOutOfMemoryError
