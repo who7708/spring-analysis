@@ -5,6 +5,7 @@ import org.spring.hashmap.MaySameHashModel;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Chris
@@ -16,7 +17,7 @@ public class TestHashMap {
     public void test1() {
         System.out.println("===== test1 =====");
         int initialCapacity = 2;
-        HashMap<String, String> map = new HashMap<>(initialCapacity);
+        Map<String, String> map = new HashMap<>(initialCapacity);
         for (int i = 1; i <= initialCapacity; i++) {
             map.put("key_" + i, "value_" + i);
         }
