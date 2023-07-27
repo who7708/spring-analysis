@@ -16,6 +16,12 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.9.7</version>
+        </dependency>
+
+        <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
             <version>3.3.0</version>
