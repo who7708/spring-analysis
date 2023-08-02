@@ -1,11 +1,12 @@
-package org.spring.boot.test.demo;/*
- * 死锁是指两个或者两个以上的进程在执行过程中，因抢夺资源而造成的一种互相等待的现象，
- * 若无外力干涉它们将都无法推进下去，如果系统资源充足，进程的资源请求都能够得到满足，
- * 死锁出现的可能性也就很低，否则就会因争夺有限的资源而陷入死锁。
- * */
+package org.spring.boot.test.demo;
 
 import java.util.concurrent.TimeUnit;
 
+/*
+ * 死锁是指两个或者两个以上的进程在执行过程中，因抢夺资源而造成的一种互相等待的现象，
+ * 若无外力干涉它们将都无法推进下去，如果系统资源充足，进程的资源请求都能够得到满足，
+ * 死锁出现的可能性也就很低，否则就会因争夺有限的资源而陷入死锁。
+ */
 class HoldLockThread implements Runnable {
     private final String lockA;
 
