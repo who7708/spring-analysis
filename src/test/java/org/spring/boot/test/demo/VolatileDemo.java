@@ -1,22 +1,25 @@
 package org.spring.boot.test.demo;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-class MyData{
+class MyData {
     volatile int number = 0;
-    public void addTo60(){
+
+    public void addTo60() {
         this.number = 60;
     }
-    public void addPlusPlus(){
+
+    public void addPlusPlus() {
         number++;
     }
 
     AtomicInteger atomicInteger = new AtomicInteger();
-    public void addMyAtommic(){
+
+    public void addMyAtommic() {
         atomicInteger.getAndIncrement();
     }
 }
+
 /*
 1 验证volatile的可见性
     1.1 加入int number=0，number变量之前根本没有添加volatile关键字修饰,没有可见性
@@ -34,23 +37,23 @@ class MyData{
 
 * */
 public class VolatileDemo {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         MyData myData = new MyData();
-        for (int i = 1; i <= 20 ; i++) {
-            new Thread(()->{
-                for (int j = 1; j <= 1000 ; j++) {
+        for (int i = 1; i <= 20; i++) {
+            new Thread(() -> {
+                for (int j = 1; j <= 1000; j++) {
                     myData.addPlusPlus();
                     myData.addMyAtommic();
                 }
-            },String.valueOf(i)).start();
+            }, String.valueOf(i)).start();
         }
 
         //需要等待上述20个线程都计算完成后，再用main线程去的最终的结果是多少？
-//        try{TimeUnit.SECONDS.sleep(5);} catch (InterruptedException e) {e.printStackTrace();}
-        while(Thread.activeCount() > 2){
+        //        try{TimeUnit.SECONDS.sleep(5);} catch (InterruptedException e) {e.printStackTrace();}
+        while (Thread.activeCount() > 2) {
             Thread.yield();
         }
-        System.out.println(Thread.currentThread().getName()+"\t finnally number value: "+myData.number);
-        System.out.println(Thread.currentThread().getName()+"\t finnally number value: "+myData.atomicInteger);
+        System.out.println(Thread.currentThread().getName() + "\t finnally number value: " + myData.number);
+        System.out.println(Thread.currentThread().getName() + "\t finnally number value: " + myData.atomicInteger);
     }
 }
