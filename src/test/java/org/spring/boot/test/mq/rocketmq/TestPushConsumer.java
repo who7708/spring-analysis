@@ -1,4 +1,4 @@
-package org.spring.boot.test.mq;
+package org.spring.boot.test.mq.rocketmq;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;

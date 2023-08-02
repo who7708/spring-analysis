@@ -1,4 +1,4 @@
-package org.spring.boot.test.mq;
+package org.spring.boot.test.mq.rocketmq;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.rocketmq.client.consumer.DefaultLitePullConsumer;

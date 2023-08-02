@@ -1,4 +1,4 @@
-package org.spring.boot.test.mq;
+package org.spring.boot.test.mq.rocketmq;
 
 /**
  * @author Chris

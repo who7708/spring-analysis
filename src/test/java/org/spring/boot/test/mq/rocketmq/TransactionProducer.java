@@ -1,4 +1,4 @@
-package org.spring.boot.test.mq;
+package org.spring.boot.test.mq.rocketmq;
 
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.LocalTransactionState;
