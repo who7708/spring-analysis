@@ -25,7 +25,9 @@ public class TestKafka {
         props.put("bootstrap.servers", "192.168.1.5:9092");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        // 内存缓冲区 默认32M
         props.put("buffer.memory", 67108864);
+        //
         props.put("batch.size", 131072);
         props.put("linger.ms", 100);
         props.put("max.request.size", 10485760);
