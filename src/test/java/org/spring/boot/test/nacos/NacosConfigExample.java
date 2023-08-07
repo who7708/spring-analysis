@@ -7,7 +7,7 @@
         <version>${version}</version>
     </dependency>
 */
-package org.spring.boot.test;
+package org.spring.boot.test.nacos;
 
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.PropertyKeyConst;
@@ -22,7 +22,7 @@ import java.util.concurrent.Executor;
  *
  * @author Nacos
  */
-public class ConfigExample {
+public class NacosConfigExample {
 
     public static void main(String[] args) throws Exception {
         String serverAddr = "192.168.1.5";

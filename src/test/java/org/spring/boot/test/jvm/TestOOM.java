@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.jvm;
 
 import java.util.HashMap;
 import java.util.Map;

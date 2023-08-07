@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.jvm;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

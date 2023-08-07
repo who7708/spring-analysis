@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.base;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Joiner;

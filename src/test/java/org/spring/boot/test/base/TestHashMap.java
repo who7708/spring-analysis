@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.base;
 
 import org.junit.Test;
 import org.spring.hashmap.MaySameHashModel;

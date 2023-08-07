@@ -1,3 +1,4 @@
+package org.spring.boot.test.jvm;
 
 /**
  * @author Chris

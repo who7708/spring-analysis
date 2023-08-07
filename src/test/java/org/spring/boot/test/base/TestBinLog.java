@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.base;
 
 import com.github.shyiko.mysql.binlog.BinaryLogFileReader;
 import com.github.shyiko.mysql.binlog.event.Event;

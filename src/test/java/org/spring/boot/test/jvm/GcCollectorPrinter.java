@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.jvm;
 
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;

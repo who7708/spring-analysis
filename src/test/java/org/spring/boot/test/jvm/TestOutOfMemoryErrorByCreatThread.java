@@ -1,4 +1,4 @@
-package org.spring.boot.test;
+package org.spring.boot.test.jvm;
 
 /**
  * java 虚拟机栈和本地方法栈内存溢出测试
