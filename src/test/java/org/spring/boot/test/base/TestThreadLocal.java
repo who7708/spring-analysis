@@ -15,8 +15,12 @@ public class TestThreadLocal {
         System.out.println("===== test1 =====");
         ThreadLocal<String> local = new ThreadLocal<>();
         //设置值
-        local.set("hello word");
-        local.set("hello word2");
+        local.set("word");
+        local.set("word2");
+        ThreadLocal<String> local2 = new ThreadLocal<>();
+        //设置值
+        local2.set("hello");
+        local2.set("hello2");
         //获取刚刚设置的值
         System.out.println(local.get());
 
@@ -29,6 +33,28 @@ public class TestThreadLocal {
                 }
             }).start();
         }
+
+    }
+
+    @Test
+    public void test2() throws Exception {
+        System.out.println("===== test1 =====");
+        ThreadLocal<String> local = new ThreadLocal<>();
+        ThreadLocal<String> local2 = new ThreadLocal<>();
+        Thread thread = new Thread(() -> {
+            local.set("word");
+            local.set("word2");
+            local2.set("hello");
+            local2.set("hello2");
+            // hello2 world2
+            System.out.println(local.get());
+            System.out.println(local2.get());
+        }, "test_ThreadLocal");
+        thread.start();
+        thread.join();
+        // null
+        System.out.println(local.get());
+        System.out.println(local2.get());
 
     }
 
