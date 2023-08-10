@@ -22,6 +22,16 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.atp-fivt</groupId>
+            <artifactId>ljv</artifactId>
+            <version>1.04</version>
+            <!--<version>1.03</version>-->
+            <!--<version>1.02</version>-->
+            <!--<version>1.01</version>-->
+            <!--<version>1.0</version>-->
+        </dependency>
+
+        <dependency>
             <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
             <version>0.17</version>
