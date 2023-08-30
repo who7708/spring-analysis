@@ -1,4 +1,5 @@
 package org.spring.boot.test.demo;
+
 /*
  * Java8之后的版本使用Metaspace来替代永久代
  * Metaspace是方法区在HotSpot中的实现，它与持久带最大的区别在于：Metaspace并不在虚拟机内存中而是使用
@@ -11,12 +12,19 @@ package org.spring.boot.test.demo;
  * 静态变量
  * 即时编译后的代码
  * */
-
 public class MetaspaceOOMT {
     static class OOMTest {
 
     }
 
+    // -Xms10G -Xmx10G
+    // -XX:ReservedCodeCacheSize=256m -XX:InitialCodeCacheSize=256m
+    // -XX:+UnlockExperimentalVMOptions -XX:+UseZGC
+    // -XX:ConcGCThreads=2 -XX:ParallelGCThreads=6
+    // -XX:ZCollectionInterval=120 -XX:ZAllocationSpikeTolerance=5
+    // -XX:+UnlockDiagnosticVMOptions -XX:-ZProactive
+    // -Xlog:safepoint,classhisto*=trace,age*,gc*=info:file=/opt/logs/logs/gc-%t.log:time,tid,tags:filecount=5,filesize=50m
+    // -XX:+UseZGC -Xmx8m -Xlog:gc*
     public static void main(String[] args) {
         int i = 0;//模拟多少次后发生异常
 
