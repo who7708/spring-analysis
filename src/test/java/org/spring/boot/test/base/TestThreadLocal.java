@@ -2,7 +2,9 @@ package org.spring.boot.test.base;
 
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Chris
@@ -79,5 +81,18 @@ public class TestThreadLocal {
         System.out.println(invoke3 & 15);
         System.out.println(invoke4);
         System.out.println(invoke4 & 15);
+    }
+
+    @Test
+    public void test3() throws Exception {
+        System.out.println("===== test1 =====");
+        Thread main = Thread.currentThread();
+        for (int i = 0; i < 10; i++) {
+            ThreadLocal<String> local = new ThreadLocal<>();
+            local.set("hello_" + i);
+        }
+        Field threadLocals = main.getClass().getDeclaredField("threadLocals");
+        threadLocals.setAccessible(true);
+        TimeUnit.SECONDS.sleep(100);
     }
 }
