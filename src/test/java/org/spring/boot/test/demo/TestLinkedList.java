@@ -43,6 +43,8 @@ public class TestLinkedList {
         ListNode cycleNodeEntry = detectNodeEntry(head);
         System.out.println(cycleNodeEntry);
 
+        ListNode reverseListNode = reverseListNode(head);
+        System.out.println(reverseListNode);
     }
 
     /**
@@ -80,6 +82,19 @@ public class TestLinkedList {
             }
         }
         return null;
+    }
+
+    // 反转一个单向链表
+    private ListNode reverseListNode(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
     }
 
     @Data
