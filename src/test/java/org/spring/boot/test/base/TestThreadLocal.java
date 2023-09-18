@@ -23,6 +23,7 @@ public class TestThreadLocal {
         local2.set("hello2");
         //获取刚刚设置的值
         System.out.println(local.get());
+        System.out.println(local2.get());
 
         for (int i = 0; i < 8; i++) {
             int finalI = i;
