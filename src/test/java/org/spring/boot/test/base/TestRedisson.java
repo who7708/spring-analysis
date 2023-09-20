@@ -5,8 +5,9 @@ import org.redisson.Redisson;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import org.redisson.config.SingleServerConfig;
 
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Chris
@@ -15,15 +16,24 @@ import java.util.concurrent.CompletableFuture;
  */
 public class TestRedisson {
     @Test
-    public void testRedisson() {
+    public void testRedisson() throws Exception {
         System.out.println("===== testRedisson =====");
         // 1.创建配置
         Config config = new Config();
+        SingleServerConfig singleServerConfig = config.useSingleServer();
         // 集群模式
         // config.useClusterServers().addNodeAddress("127.0.0.1:7004", "127.0.0.1:7001");
         // 2.根据 Config 创建出 RedissonClient 示例。
-        config.useSingleServer().setAddress("redis://127.0.0.1:6379");
+        singleServerConfig.setAddress("redis://192.168.1.5:6379");
+        singleServerConfig.setPassword("123456");
         RedissonClient redissonClient = Redisson.create(config);
+        RLock myLock = redissonClient.getLock("myLock");
+        if (myLock.tryLock()) {
+            System.out.println("加锁成功");
+        }
+
+        TimeUnit.SECONDS.sleep(5);
+        myLock.unlock();
 
         // config.useMasterSlaveServers()
         //         .setMasterAddress()
