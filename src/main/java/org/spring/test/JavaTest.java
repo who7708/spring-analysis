@@ -1,7 +1,7 @@
 package org.spring.test;
 
-import org.spring.base.Student;
 import org.junit.Test;
+import org.spring.base.Student;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -28,7 +28,10 @@ public class JavaTest {
     }
 
     public static void main(String[] args) {
+        // 仅获取当前类的方法
         for (Method method : MyList.class.getDeclaredMethods()) {
+            // 包含父类继承的方法
+            // for (Method method : MyList.class.getMethods()) {
             System.out.println("name: " + method.getName() + ", return: " + method.getReturnType());
         }
     }
