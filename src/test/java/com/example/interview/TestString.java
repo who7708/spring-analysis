@@ -41,4 +41,21 @@ public class TestString {
         System.out.println(s3 == s2);
     }
 
+    @Test
+    public void test3() throws Exception {
+        System.out.println("===== test3 =====");
+        Integer i1 = 100;
+        Integer i2 = 100;
+
+        // true
+        System.out.println(i1 == i2);
+
+        Integer i3 = 128;
+        Integer i4 = 128;
+        // false
+        System.out.println(i3 == i4);
+
+        // 可以使用 -XX:AutoBoxCacheMax=256 来进行修改
+    }
+
 }
