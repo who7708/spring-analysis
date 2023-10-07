@@ -3,6 +3,8 @@ package com.example.interview;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * @author Chris
@@ -56,6 +58,21 @@ public class TestString {
         System.out.println(i3 == i4);
 
         // 可以使用 -XX:AutoBoxCacheMax=256 来进行修改
+    }
+
+    @Test
+    public void test4() throws Exception {
+        System.out.println("===== test4 =====");
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("1");
+        arrayList.add(1, "1");
+
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("1");
+        linkedList.add(1, "1");
+
+        System.out.println(arrayList);
+        System.out.println(linkedList);
     }
 
 }
