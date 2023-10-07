@@ -1,0 +1,197 @@
+Classfile /G:/IdeaProjects/jdk7-demo/target/test-classes/com/example/demo/lock/SynchronizedDemo.class
+  Last modified 2020-5-12; size 1618 bytes
+  MD5 checksum 7bea8de5fce4d3a435ca13a4a0bd6a84
+  Compiled from "SynchronizedDemo.java"
+public class com.example.demo.lock.SynchronizedDemo
+  minor version: 0
+  major version: 51
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #3.#52         // com/example/demo/lock/SynchronizedDemo.method:()V
+   #2 = Methodref          #25.#53        // java/lang/Object."<init>":()V
+   #3 = Class              #54            // com/example/demo/lock/SynchronizedDemo
+   #4 = Fieldref           #55.#56        // java/util/concurrent/TimeUnit.SECONDS:Ljava/util/concurrent/TimeUnit;
+   #5 = Long               5l
+   #7 = Methodref          #55.#57        // java/util/concurrent/TimeUnit.sleep:(J)V
+   #8 = Class              #58            // java/lang/InterruptedException
+   #9 = Methodref          #8.#59         // java/lang/InterruptedException.printStackTrace:()V
+  #10 = Class              #60            // java/lang/Thread
+  #11 = Class              #61            // com/example/demo/lock/SynchronizedDemo$1
+  #12 = Methodref          #11.#53        // com/example/demo/lock/SynchronizedDemo$1."<init>":()V
+  #13 = String             #62            // thread1
+  #14 = Methodref          #10.#63        // java/lang/Thread."<init>":(Ljava/lang/Runnable;Ljava/lang/String;)V
+  #15 = Methodref          #10.#64        // java/lang/Thread.start:()V
+  #16 = Methodref          #10.#65        // java/lang/Thread.currentThread:()Ljava/lang/Thread;
+  #17 = Methodref          #10.#66        // java/lang/Thread.getName:()Ljava/lang/String;
+  #18 = Fieldref           #67.#68        // java/lang/System.out:Ljava/io/PrintStream;
+  #19 = Class              #69            // java/lang/StringBuilder
+  #20 = Methodref          #19.#53        // java/lang/StringBuilder."<init>":()V
+  #21 = Methodref          #19.#70        // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #22 = String             #71            // hello method
+  #23 = Methodref          #19.#72        // java/lang/StringBuilder.toString:()Ljava/lang/String;
+  #24 = Methodref          #73.#74        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #25 = Class              #75            // java/lang/Object
+  #26 = Utf8
+  #27 = Utf8               InnerClasses
+  #28 = Utf8               <init>
+  #29 = Utf8               ()V
+  #30 = Utf8               Code
+  #31 = Utf8               LineNumberTable
+  #32 = Utf8               LocalVariableTable
+  #33 = Utf8               this
+  #34 = Utf8               Lcom/example/demo/lock/SynchronizedDemo;
+  #35 = Utf8               main
+  #36 = Utf8               ([Ljava/lang/String;)V
+  #37 = Utf8               e
+  #38 = Utf8               Ljava/lang/InterruptedException;
+  #39 = Utf8               args
+  #40 = Utf8               [Ljava/lang/String;
+  #41 = Utf8               StackMapTable
+  #42 = Class              #40            // "[Ljava/lang/String;"
+  #43 = Class              #75            // java/lang/Object
+  #44 = Class              #58            // java/lang/InterruptedException
+  #45 = Class              #76            // java/lang/Throwable
+  #46 = Utf8               method
+  #47 = Utf8               name
+  #48 = Utf8               Ljava/lang/String;
+  #49 = Utf8               access$000
+  #50 = Utf8               SourceFile
+  #51 = Utf8               SynchronizedDemo.java
+  #52 = NameAndType        #46:#29        // method:()V
+  #53 = NameAndType        #28:#29        // "<init>":()V
+  #54 = Utf8               com/example/demo/lock/SynchronizedDemo
+  #55 = Class              #77            // java/util/concurrent/TimeUnit
+  #56 = NameAndType        #78:#79        // SECONDS:Ljava/util/concurrent/TimeUnit;
+  #57 = NameAndType        #80:#81        // sleep:(J)V
+  #58 = Utf8               java/lang/InterruptedException
+  #59 = NameAndType        #82:#29        // printStackTrace:()V
+  #60 = Utf8               java/lang/Thread
+  #61 = Utf8               com/example/demo/lock/SynchronizedDemo$1
+  #62 = Utf8               thread1
+  #63 = NameAndType        #28:#83        // "<init>":(Ljava/lang/Runnable;Ljava/lang/String;)V
+  #64 = NameAndType        #84:#29        // start:()V
+  #65 = NameAndType        #85:#86        // currentThread:()Ljava/lang/Thread;
+  #66 = NameAndType        #87:#88        // getName:()Ljava/lang/String;
+  #67 = Class              #89            // java/lang/System
+  #68 = NameAndType        #90:#91        // out:Ljava/io/PrintStream;
+  #69 = Utf8               java/lang/StringBuilder
+  #70 = NameAndType        #92:#93        // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #71 = Utf8               hello method
+  #72 = NameAndType        #94:#88        // toString:()Ljava/lang/String;
+  #73 = Class              #95            // java/io/PrintStream
+  #74 = NameAndType        #96:#97        // println:(Ljava/lang/String;)V
+  #75 = Utf8               java/lang/Object
+  #76 = Utf8               java/lang/Throwable
+  #77 = Utf8               java/util/concurrent/TimeUnit
+  #78 = Utf8               SECONDS
+  #79 = Utf8               Ljava/util/concurrent/TimeUnit;
+  #80 = Utf8               sleep
+  #81 = Utf8               (J)V
+  #82 = Utf8               printStackTrace
+  #83 = Utf8               (Ljava/lang/Runnable;Ljava/lang/String;)V
+  #84 = Utf8               start
+  #85 = Utf8               currentThread
+  #86 = Utf8               ()Ljava/lang/Thread;
+  #87 = Utf8               getName
+  #88 = Utf8               ()Ljava/lang/String;
+  #89 = Utf8               java/lang/System
+  #90 = Utf8               out
+  #91 = Utf8               Ljava/io/PrintStream;
+  #92 = Utf8               append
+  #93 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+  #94 = Utf8               toString
+  #95 = Utf8               java/io/PrintStream
+  #96 = Utf8               println
+  #97 = Utf8               (Ljava/lang/String;)V
+{
+  public com.example.demo.lock.SynchronizedDemo();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #2                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 5: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/example/demo/lock/SynchronizedDemo;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=4, args_size=1
+         0: ldc_w         #3                  // class com/example/demo/lock/SynchronizedDemo
+         3: dup
+         4: astore_1
+         5: monitorenter
+         6: getstatic     #4                  // Field java/util/concurrent/TimeUnit.SECONDS:Ljava/util/concurrent/TimeUnit;
+         9: ldc2_w        #5                  // long 5l
+        12: invokevirtual #7                  // Method java/util/concurrent/TimeUnit.sleep:(J)V
+        15: goto          23
+        18: astore_2
+        19: aload_2
+        20: invokevirtual #9                  // Method java/lang/InterruptedException.printStackTrace:()V
+        23: invokestatic  #1                  // Method method:()V
+        26: aload_1
+        27: monitorexit
+        28: goto          36
+        31: astore_3
+        32: aload_1
+        33: monitorexit
+        34: aload_3
+        35: athrow
+        36: new           #10                 // class java/lang/Thread
+        39: dup
+        40: new           #11                 // class com/example/demo/lock/SynchronizedDemo$1
+        43: dup
+        44: invokespecial #12                 // Method com/example/demo/lock/SynchronizedDemo$1."<init>":()V
+        47: ldc           #13                 // String thread1
+        49: invokespecial #14                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;Ljava/lang/String;)V
+        52: invokevirtual #15                 // Method java/lang/Thread.start:()V
+        55: return
+      Exception table:
+         from    to  target type
+             6    15    18   Class java/lang/InterruptedException
+             6    28    31   any
+            31    34    31   any
+      LineNumberTable:
+        line 7: 0
+        line 9: 6
+        line 12: 15
+        line 10: 18
+        line 11: 19
+        line 13: 23
+        line 14: 26
+        line 16: 36
+        line 22: 55
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           19       4     2     e   Ljava/lang/InterruptedException;
+            0      56     0  args   [Ljava/lang/String;
+      StackMapTable: number_of_entries = 4
+        frame_type = 255 /* full_frame */
+          offset_delta = 18
+          locals = [ class "[Ljava/lang/String;", class java/lang/Object ]
+          stack = [ class java/lang/InterruptedException ]
+        frame_type = 4 /* same */
+        frame_type = 71 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 250 /* chop */
+          offset_delta = 4
+
+  static void access$000();
+    descriptor: ()V
+    flags: ACC_STATIC, ACC_SYNTHETIC
+    Code:
+      stack=0, locals=0, args_size=0
+         0: invokestatic  #1                  // Method method:()V
+         3: return
+      LineNumberTable:
+        line 5: 0
+}
+SourceFile: "SynchronizedDemo.java"
+InnerClasses:
+     static #11; //class com/example/demo/lock/SynchronizedDemo$1
