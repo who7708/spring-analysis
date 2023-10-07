@@ -25,26 +25,44 @@ public class TestAssignableFrom {
         C c = new C();
         A ba = new B();
         System.out.println("1-------------");
+        // true
         System.out.println(A.class.isAssignableFrom(a.getClass()));
+        // true
         System.out.println(B.class.isAssignableFrom(b.getClass()));
+        // true
         System.out.println(A.class.isAssignableFrom(b.getClass()));
+        // true
         System.out.println(A.class.isAssignableFrom(c.getClass()));
+        // false
         System.out.println(B.class.isAssignableFrom(a.getClass()));
+        // true
         System.out.println(A.class.isAssignableFrom(ba.getClass()));
+        // true
         System.out.println(B.class.isAssignableFrom(ba.getClass()));
         System.out.println("2-------------");
+        // true
         System.out.println(a.getClass().isAssignableFrom(A.class));
+        // true
         System.out.println(b.getClass().isAssignableFrom(B.class));
+        // true
         System.out.println(a.getClass().isAssignableFrom(B.class));
+        // true
         System.out.println(a.getClass().isAssignableFrom(C.class));
+        // false
         System.out.println(b.getClass().isAssignableFrom(A.class));
+        // true
         System.out.println(ba.getClass().isAssignableFrom(A.class));
+        // true
         System.out.println(ba.getClass().isAssignableFrom(B.class));
         System.out.println("3-------------");
+        // true
         System.out.println(Object.class.isAssignableFrom(b.getClass()));
+        // true
         System.out.println(Object.class.isAssignableFrom("abc".getClass()));
         System.out.println("4-------------");
+        // false
         System.out.println("a".getClass().isAssignableFrom(Object.class));
+        // false
         System.out.println("abc".getClass().isAssignableFrom(Object.class));
     }
 }
