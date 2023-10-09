@@ -157,6 +157,25 @@ public class ReverseSummary {
         return head;
     }
 
+    public ListNode reversePart2(ListNode head, int m, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
+        ListNode start = head;
+        for (int i = 1; i < m; i++) {
+            pre = start;
+            start = start.next;
+        }
+        // reverse
+        for (int i = 0; i < n - m; i++) {
+            ListNode temp = start.next;
+            start.next = temp.next;
+            temp.next = pre.next;
+            pre.next = temp;
+        }
+        return dummy.next;
+    }
+
     /**
      * 5.反转链表相邻节点 非递归
      * d-1234
@@ -312,8 +331,9 @@ public class ReverseSummary {
         addNode(head, new ListNode(3));
         addNode(head, new ListNode(4));
         addNode(head, new ListNode(5));
-        ListNode res = reverseAllList(head);
-        NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseAllList(head);
+        // NiuKeUtils.printListNode(res);
 
         // ListNode res = reverseAllListRecur(head);
         // NiuKeUtils.printListNode(res);
@@ -327,8 +347,9 @@ public class ReverseSummary {
         // ListNode res = reverseLastN(head, 3);
         // NiuKeUtils.printListNode(res);
 
-        // ListNode res = reversePart(head, 3, 5);
-        // NiuKeUtils.printListNode(res);
+        // ListNode res = reversePart(head, 2, 4);
+        ListNode res = reversePart2(head, 2, 4);
+        NiuKeUtils.printListNode(res);
 
         // ListNode res = reverseInPairsRecur(head);
         // NiuKeUtils.printListNode(res);
