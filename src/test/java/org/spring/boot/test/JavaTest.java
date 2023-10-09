@@ -1,4 +1,4 @@
-package org.spring.test;
+package org.spring.boot.test;
 
 import org.junit.Test;
 import org.spring.base.Student;

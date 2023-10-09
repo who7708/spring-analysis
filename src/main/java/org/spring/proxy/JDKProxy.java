@@ -1,4 +1,4 @@
-package org.spring.test.proxy;
+package org.spring.proxy;
 
 import java.lang.reflect.Proxy;
 

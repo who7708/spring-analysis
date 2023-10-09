@@ -1,4 +1,4 @@
-package org.spring.test.proxy;
+package org.spring.proxy;
 
 /**
  * 动态代理接口.

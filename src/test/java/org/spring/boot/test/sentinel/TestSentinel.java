@@ -22,6 +22,29 @@ import java.util.concurrent.TimeUnit;
  * @since 2023-07-31
  */
 public class TestSentinel {
+    @Test
+    public void testHello() throws Exception {
+        System.out.println("===== test2 =====");
+
+    }
+
+    @Test
+    public void testSmoothBursty4() {
+        RateLimiter r = RateLimiter.create(5);
+        while (true) {
+            System.out.println("get 1 tokens: " + r.acquire() + "s");
+        }
+        /**
+         * output: 基本上都是0.2s执行一次，符合一秒发放5个令牌的设定。
+         * get 1 tokens: 0.0s
+         * get 1 tokens: 0.182014s
+         * get 1 tokens: 0.188464s
+         * get 1 tokens: 0.198072s
+         * get 1 tokens: 0.196048s
+         * get 1 tokens: 0.197538s
+         * get 1 tokens: 0.196049s
+         */
+    }
 
     @Test
     public void testSmoothBursty() {
