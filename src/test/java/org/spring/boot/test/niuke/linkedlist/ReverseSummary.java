@@ -2,6 +2,7 @@ package org.spring.boot.test.niuke.linkedlist;
 
 import org.junit.Test;
 import org.spring.boot.test.niuke.ListNode;
+import org.spring.boot.test.niuke.NiuKeUtils;
 
 /**
  * 链表反转专题总结
@@ -311,20 +312,38 @@ public class ReverseSummary {
         addNode(head, new ListNode(3));
         addNode(head, new ListNode(4));
         addNode(head, new ListNode(5));
-        //        head = reverseAllList(head);
-        //        head = reverseAllListRecur(head);
-        //        head = reverseFirstN(head, 3);
-        //        head = reverseFirstNRecur(head, 3);
-        //        head = reverseLastN(head, 3);
-        //        head = reversePart(head, 3, 5);
-        //        head = reverseInPairsRecur(head);
-        //        head = reverseInPairs(head);
-        //        head = reverseKGroup(head, 3);
-        isPalindrome(head);
-        while (head != null) {
-            System.out.println(head.val);
-            head = head.next;
-        }
+        ListNode res = reverseAllList(head);
+        NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseAllListRecur(head);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseFirstN(head, 3);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseFirstNRecur(head, 3);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseLastN(head, 3);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reversePart(head, 3, 5);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseInPairsRecur(head);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseInPairs(head);
+        // NiuKeUtils.printListNode(res);
+
+        // ListNode res = reverseKGroup(head, 3);
+        // NiuKeUtils.printListNode(res);
+
+        // System.out.println(isPalindrome(head));
+        // while (head != null) {
+        //     System.out.println(head.val);
+        //     head = head.next;
+        // }
     }
 
     public void addNode(ListNode head, ListNode node) {
