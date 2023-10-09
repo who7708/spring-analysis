@@ -19,6 +19,13 @@ public class NiuKeUtils {
         return head;
     }
 
+    public void addNode(ListNode head, ListNode node) {
+        while (head.next != null) {
+            head = head.next;
+        }
+        head.next = node;
+    }
+
     public static void printListNode(ListNode head) {
         // 打印链表
         while (head != null) {
