@@ -1,6 +1,5 @@
 package org.spring.boot;
 
-import com.alibaba.nacos.spring.context.annotation.discovery.EnableNacosDiscovery;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +15,7 @@ import java.util.Arrays;
  * @since 2023-07-06
  */
 @EnableAsync
-@EnableNacosDiscovery
+// @EnableNacosDiscovery
 // @EnableNacosConfig
 // // 接入nacos 方法一
 // @NacosPropertySource(groupId = "test", dataId = "nacos.cfg.dataId", autoRefreshed = true)

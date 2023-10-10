@@ -2,7 +2,6 @@ package org.spring.syncdbtoredis;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.mysql.cj.jdbc.Driver;
-import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -52,12 +51,12 @@ public class ConnectUtils {
         return dataSource;
     }
 
-    public static DataSource getDataSource2() {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName(DRIVE_CLASS_NAME);
-        dataSource.setJdbcUrl(URL);
-        dataSource.setUsername(USER);
-        dataSource.setPassword(PASSWORD);
-        return dataSource;
-    }
+    // public static DataSource getDataSource2() {
+    //     HikariDataSource dataSource = new HikariDataSource();
+    //     dataSource.setDriverClassName(DRIVE_CLASS_NAME);
+    //     dataSource.setJdbcUrl(URL);
+    //     dataSource.setUsername(USER);
+    //     dataSource.setPassword(PASSWORD);
+    //     return dataSource;
+    // }
 }
