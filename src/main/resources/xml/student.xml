@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<class>
+    <student rollno="393">
+        <firstname>dinkar</firstname>
+        <lastname>kad</lastname>
+        <nickname>dinkar</nickname>
+        <marks>85</marks>
+        <course>
+            <chinese>99</chinese>
+            <math>95</math>
+        </course>
+    </student>
+    <student rollno="493">
+        <firstname>Vaneet</firstname>
+        <lastname>Gupta</lastname>
+        <nickname>vinni</nickname>
+        <marks>95</marks>
+        <course>
+            <chinese>99</chinese>
+            <math>95</math>
+        </course>
+    </student>
+    <student rollno="593">
+        <firstname>jasvir</firstname>
+        <lastname>singn</lastname>
+        <nickname>jazz</nickname>
+        <marks>90</marks>
+        <course>
+            <!--<chinese>99</chinese>-->
+            <math>95</math>
+        </course>
+    </student>
+</class>
+
