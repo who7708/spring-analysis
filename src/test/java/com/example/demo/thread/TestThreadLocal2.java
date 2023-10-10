@@ -33,9 +33,6 @@ public class TestThreadLocal2 {
         // }
         // 会先判断当前调用join的线程是否存活,即当前线程是否执行结束,如果没有执行结束,则进行Object.wait进行阻塞
         childThread.join();
-
-        // 圆通速递
-        //
     }
 
     @Test
