@@ -1,15 +1,23 @@
 package com.example.xml;
 
-import java.io.*;
-import java.util.*;
-
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-import javax.xml.parsers.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
+import java.io.File;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class MyXMLReader {
 
@@ -109,4 +117,23 @@ public class MyXMLReader {
     //     String expression = "/Tutorials/Tutorial";
     //     nodeList = (NodeList) xPath.compile(expression).evaluate(doc, XPathConstants.NODESET);
     // }
+
+    @Test
+    public void test5() throws Exception {
+        System.out.println("===== test5 =====");
+        String filePath = MyXMLReader.class.getResource("/xml/a.ls").getPath();
+        final Pattern pattern = Pattern.compile("^(.*)(a\\.b\\..*\\.XML)$");
+        List<String> readLines = FileUtils.readLines(new File(filePath), StandardCharsets.UTF_8);
+        List<String> filenameList = readLines.stream()
+                .map(s -> {
+                    Matcher matcher = pattern.matcher(s);
+                    if (matcher.find()) {
+                        return matcher.group(matcher.groupCount());
+                    }
+                    return null;
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+        System.out.println(filenameList);
+    }
 }
