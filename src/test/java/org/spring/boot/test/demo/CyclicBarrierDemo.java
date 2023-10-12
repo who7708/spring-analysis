@@ -20,7 +20,7 @@ public class CyclicBarrierDemo {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
+                System.out.println(Thread.currentThread().getName() + "\t 收集到第：" + tempInt + "龙珠线束");
             }, String.valueOf(i)).start();
         }
     }
