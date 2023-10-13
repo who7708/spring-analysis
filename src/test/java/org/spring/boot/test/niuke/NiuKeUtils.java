@@ -19,7 +19,36 @@ public class NiuKeUtils {
         return head;
     }
 
-    public void addNode(ListNode head, ListNode node) {
+    // 创建一个环形链表
+    public static ListNode createCycleListNode() {
+        // 1-2-3-4-5-3...
+        ListNode head = new ListNode(1);
+        NiuKeUtils.addNode(head, new ListNode(2));
+        ListNode head3 = new ListNode(3);
+        NiuKeUtils.addNode(head, head3);
+        NiuKeUtils.addNode(head, new ListNode(4));
+        ListNode head5 = new ListNode(5);
+        NiuKeUtils.addNode(head, head5);
+        // 形成环
+        head5.next = head3;
+        // // 1-6-3-5-2-4-3...
+        // ListNode head = new ListNode(1);
+        // ListNode node2 = new ListNode(2);
+        // ListNode node3 = new ListNode(3);
+        // ListNode node4 = new ListNode(4);
+        // ListNode node5 = new ListNode(5);
+        // ListNode node6 = new ListNode(6);
+        // addNode(head, node6);
+        // addNode(head, node3);
+        // addNode(head, node5);
+        // addNode(head, node2);
+        // addNode(head, node4);
+        // // 创建一个环
+        // node4.next = node3;
+        return head;
+    }
+
+    public static void addNode(ListNode head, ListNode node) {
         while (head.next != null) {
             head = head.next;
         }
