@@ -1,0 +1,72 @@
+package org.spring.boot.test.niuke.all;
+
+import org.junit.Test;
+import org.spring.boot.test.niuke.ListNode;
+import org.spring.boot.test.niuke.NiuKeUtils;
+
+/**
+ * NC3 链表中环的入口结点
+ * 具体做法：
+ *
+ * step 1：使用BM6.判断链表中是否有环中的方法判断链表是否有环，并找到相遇的节点。
+ * step 2：慢指针继续在相遇节点，快指针回到链表头，两个指针同步逐个元素逐个元素开始遍历链表。
+ * step 3：再次相遇的地方就是环的入口。
+ *
+ * 动态演示如图
+ * docs/8B355F0FCD615249270C1B1DEBC84C52.gif
+ *
+ * @author Chris
+ * @version 1.0.0
+ * @since 2023/10/13
+ */
+public class NiuKeNC3 {
+    @Test
+    public void test() throws Exception {
+        System.out.println("===== test =====");
+        // write code here
+        // 线性链表
+        // ListNode head = NiuKeUtils.createListNode(5);
+
+        // 环形链表
+        // 1-2-3-4-5-3...
+        // ListNode head = NiuKeUtils.createCycleListNode1();
+        ListNode head = NiuKeUtils.createCycleListNode2();
+
+        ListNode hasCycle = hasCycle(head);
+        System.out.println(hasCycle);
+
+        ListNode entryNode = EntryNodeOfLoop(head);
+        System.out.println(entryNode);
+    }
+
+    // 链表中环的入口节点
+    public ListNode EntryNodeOfLoop(ListNode pHead) {
+        ListNode slow = hasCycle(pHead);
+        if (slow == null) {
+            return null;
+        }
+        ListNode fast = pHead;
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    public ListNode hasCycle(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return slow;
+            }
+        }
+        return null;
+    }
+}
