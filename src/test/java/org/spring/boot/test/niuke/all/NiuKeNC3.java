@@ -42,10 +42,13 @@ public class NiuKeNC3 {
     // 链表中环的入口节点
     public ListNode EntryNodeOfLoop(ListNode pHead) {
         ListNode slow = hasCycle(pHead);
+        // 没有环
         if (slow == null) {
             return null;
         }
+        // 快指针回到表头
         ListNode fast = pHead;
+        // 再次相遇即是环入口
         while (fast != slow) {
             fast = fast.next;
             slow = slow.next;
@@ -53,20 +56,26 @@ public class NiuKeNC3 {
         return slow;
     }
 
+    // 判断有没有环，返回相遇的地方
     public ListNode hasCycle(ListNode head) {
+        // 先判断链表为空的情况
         if (head == null) {
             return null;
         }
-
+        // 快慢双指针
         ListNode slow = head;
         ListNode fast = head;
+        // 如果没环快指针会先到链表尾
         while (fast != null && fast.next != null) {
+            // 慢指针移动一步
             slow = slow.next;
+            // 快指针移动两步
             fast = fast.next.next;
             if (slow == fast) {
                 return slow;
             }
         }
+        //到末尾说明没有环，返回null
         return null;
     }
 }
