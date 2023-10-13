@@ -28,9 +28,10 @@ public class NiuKeUtils {
 
     public static void printListNode(ListNode head) {
         // 打印链表
-        while (head != null) {
-            System.out.print(head.val + " ");
-            head = head.next;
+        ListNode temp = head;
+        while (temp != null) {
+            System.out.print(temp.val + " ");
+            temp = temp.next;
         }
         System.out.println();
     }
@@ -77,5 +78,23 @@ public class NiuKeUtils {
         // if (root != null && root.right != null) {
         //     printTreeNode(root.right, "right");
         // }
+    }
+
+    /**
+     * 反转链表
+     * 1->2->3 => 3->2->1
+     *
+     * @param head 链表头节点
+     * @return 反转后的链表
+     */
+    public static ListNode reverseListNode(ListNode head) {
+        ListNode node = null;
+        while (head != null) {
+            ListNode temp = head.next;
+            head.next = node;
+            node = head;
+            head = temp;
+        }
+        return node;
     }
 }
