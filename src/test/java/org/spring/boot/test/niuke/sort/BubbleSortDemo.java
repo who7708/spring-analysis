@@ -23,14 +23,14 @@ public class BubbleSortDemo {
     @Test
     public void test() throws Exception {
         System.out.println("===== test =====");
-        int[] arr = {-10, 9, 20, 3, 0, 15, 7};
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
+        int[] arr = {9, 20, 3, -10, 0, 15, 7};
         bubbleSort(arr);
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
+        // System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
     }
 
     // 冒泡排序
     public void bubbleSort(int[] arr) {
+        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         if (arr == null || arr.length <= 1) {
             return;
         }
@@ -47,6 +47,7 @@ public class BubbleSortDemo {
                     arr[i] = arr[i] ^ arr[j];
                 }
             }
+            System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         }
     }
 
