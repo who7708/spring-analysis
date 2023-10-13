@@ -23,12 +23,11 @@ public class SelectSortDemo {
         System.out.println("===== test1 =====");
 
         int[] arr = { 9, 20, 3, -10, 0, 15, 7};
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         selectSortDemo(arr);
-        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
     }
 
     private void selectSortDemo(int[] arr) {
+        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++) {
             int minIdx = i;
             for (int j = i; j < arr.length; j++) {
@@ -43,6 +42,7 @@ public class SelectSortDemo {
                 arr[minIdx] = arr[i] ^ arr[minIdx];
                 arr[i] = arr[i] ^ arr[minIdx];
             }
+            System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         }
     }
 }
