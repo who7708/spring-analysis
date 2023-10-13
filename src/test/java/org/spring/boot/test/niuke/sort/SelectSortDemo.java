@@ -22,14 +22,16 @@ public class SelectSortDemo {
     public void test1() throws Exception {
         System.out.println("===== test1 =====");
 
-        int[] arr = { 9, 20, 3, -10, 0, 15, 7};
+        int[] arr = {9, 20, 3, -10, 0, 15, 7};
         selectSortDemo(arr);
     }
 
     private void selectSortDemo(int[] arr) {
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        for (int i = 0; i < arr.length; i++) {
+        // 总共要经过 N-1 轮比较
+        for (int i = 0; i < arr.length - 1; i++) {
             int minIdx = i;
+            // 每轮需要比较的次数 N-i
             for (int j = i; j < arr.length; j++) {
                 // 每次循环找到最小值的索引
                 if (arr[minIdx] > arr[j]) {
