@@ -22,7 +22,7 @@ public class SelectSortDemo {
     public void test1() throws Exception {
         System.out.println("===== test1 =====");
 
-        int[] arr = {-10, 9, 20, 3, 0, 15, 7};
+        int[] arr = { 9, 20, 3, -10, 0, 15, 7};
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         selectSortDemo(arr);
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));

@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	arr := []int{-10, 9, 20, 3, 0, 15, 7}
+	arr := []int{9, 20, 3, -10, 0, 15, 7}
 	fmt.Println(arr)
 	selectSortDemo(arr)
 	fmt.Println(arr)
