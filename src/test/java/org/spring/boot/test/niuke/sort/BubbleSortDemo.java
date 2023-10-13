@@ -25,12 +25,12 @@ public class BubbleSortDemo {
         System.out.println("===== test =====");
         int[] arr = {-10, 9, 20, 3, 0, 15, 7};
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
-        insertSort(arr);
+        bubbleSort(arr);
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
     }
 
-    // 插入排序
-    public void insertSort(int[] arr) {
+    // 冒泡排序
+    public void bubbleSort(int[] arr) {
         if (arr == null || arr.length <= 1) {
             return;
         }
