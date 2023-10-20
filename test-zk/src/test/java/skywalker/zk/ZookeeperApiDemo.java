@@ -52,7 +52,7 @@ public class ZookeeperApiDemo {
 
     @Before
     public void connect() throws IOException {
-        zooKeeper = new ZooKeeper("127.0.0.1:12181,127.0.0.1:22181,127.0.0.1:32181",
+        zooKeeper = new ZooKeeper("0.0.0.0:12181,0.0.0.0:22181,0.0.0.0:32181",
                 SESSION_TIMEOUT, watcher);
         try {
             countDownLatch.await();
