@@ -17,7 +17,7 @@ public class TestThreadPool {
     public void test1() {
         System.out.println("===== test1 =====");
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                2, // 核心线程数
+                0, // 核心线程数
                 3, // 最大线程数
                 2, // 线程存活时间
                 TimeUnit.SECONDS,
@@ -34,8 +34,9 @@ public class TestThreadPool {
         );
 
         for (int i = 0; i < 3; i++) {
+            int finalI = i;
             executor.execute(()->{
-                System.out.println();
+                System.out.println("i = " + finalI);
             });
         }
 
