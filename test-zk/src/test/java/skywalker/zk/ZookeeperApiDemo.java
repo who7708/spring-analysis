@@ -108,6 +108,47 @@ public class ZookeeperApiDemo {
     }
 
     @Test
+    public void createNodeWithWhile() {
+        try {
+            for (int i = 0; i < 100; i++) {
+                // 普通临时
+                String result = zooKeeper.create("/while/zk001",//节点的全路径
+                        ("zk001-data" + i).getBytes(),//节点中的数据->字节数据
+                        ZooDefs.Ids.OPEN_ACL_UNSAFE,//指定访问控制列表
+                        CreateMode.PERSISTENT_SEQUENTIAL // 指定创建节点的类型
+                );
+                if (result != null) {
+                    LOGGER.info("create node success,result={}", result);
+                } else {
+                    System.out.println("创建失败");
+                }
+            }
+            Thread.sleep(10000);
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error(e.getMessage());
+        }
+
+    }
+
+    //获取所有的子节点
+    @Test
+    public void deleteChildren() {
+        try {
+            // 仅能获取到节点下的子节点，孙子节点不会被获取
+            List<String> children = zooKeeper.getChildren("/while", true);
+            for (String node : children) {
+                LOGGER.info("================{}", node);
+                if (node.startsWith("zk001")) {
+                    zooKeeper.delete("/" + node, -1);
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    @Test
     public void getNodeData() {
         try {
             //注意，是结点的全路径
