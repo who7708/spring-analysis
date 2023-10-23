@@ -348,6 +348,7 @@ public class HashMap<K, V> extends AbstractMap<K, V>
      */
     static final int hash(Object key) {
         int h;
+        // comment 2023/10/21 高低位进行异或操作，
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
