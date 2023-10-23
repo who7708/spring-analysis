@@ -12,6 +12,9 @@
     <modules>
         <module>test-base</module>
         <module>test-zk</module>
+        <module>test-spring</module>
+        <module>test-spring-boot</module>
+        <module>test-nacos</module>
     </modules>
 
     <properties>
