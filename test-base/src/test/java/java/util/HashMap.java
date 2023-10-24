@@ -657,6 +657,7 @@ public class HashMap<K, V> extends AbstractMap<K, V>
         Node<K, V>[] tab;
         Node<K, V> p;
         int n, i;
+        // 数组是否为空，为空时初始化数组
         if ((tab = table) == null || (n = tab.length) == 0) {
             n = (tab = resize()).length;
         }
