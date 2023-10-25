@@ -3,9 +3,7 @@ package org.spring.boot.test.niuke.linkedlist;
 import org.spring.boot.test.niuke.ListNode;
 import org.spring.boot.test.niuke.NiuKeUtils;
 
-import java.util.Scanner;
-import java.util.Stack;
-
+// 链表反转
 // 描述
 // 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。
 // 数据范围： 0≤n≤1000
@@ -16,7 +14,7 @@ public class TestNiuKe295Main1 {
     public static void main(String[] args) {
         ListNode head = NiuKeUtils.createListNode(6);
         // 反转链表
-        ListNode res = ReverseList(head);
+        ListNode res = reverseListNode(head);
         NiuKeUtils.printListNode(res);
         System.out.println("finished...");
     }
@@ -27,7 +25,7 @@ public class TestNiuKe295Main1 {
      * @param head ListNode类
      * @return ListNode类
      */
-    public static ListNode ReverseList(ListNode head) {
+    public static ListNode reverseListNode(ListNode head) {
         // write code here
         if (head == null) {
             return null;
