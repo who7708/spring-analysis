@@ -1,5 +1,6 @@
 package com.example.demo.proxy;
 
+import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -20,13 +21,24 @@ public class DynamicProxyByCGLIB {
         UserDao proxy = new ProxyFactory<>(target).getProxyInstance();
         System.out.println(proxy.getClass());
         //执行代理对象方法
+        // save 方法被增强了，被 final 或者 static 修饰的无法被代理
         System.out.println(proxy.save());
+        proxy.finalMethod();
+        proxy.staticMethod();
     }
 
     static class UserDao {
         public int save() {
             System.out.println("保存数据");
             return 1;
+        }
+
+        public final void finalMethod() {
+            System.out.println("测试 final 方法");
+        }
+
+        public static void staticMethod() {
+            System.out.println("测试 static 方法");
         }
     }
 
@@ -40,6 +52,9 @@ public class DynamicProxyByCGLIB {
 
         /** 为目标对象生成代理对象 */
         public T getProxyInstance() {
+            // Cglib 动态代理
+            // 代理类class文件存入本地磁盘方便我们反编译查看源码
+            System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "./code");
             // 工具类
             Enhancer enhancer = new Enhancer();
             // 设置父类
