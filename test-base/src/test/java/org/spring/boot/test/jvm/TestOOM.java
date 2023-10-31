@@ -2,6 +2,7 @@ package org.spring.boot.test.jvm;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Chris
@@ -9,12 +10,13 @@ import java.util.Map;
  * @since 2023-07-24
  */
 public class TestOOM {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Map<Integer, Object> m = new HashMap<>();
         for (int i = 0; i < 10_000; i++) {
             System.out.println("循环 " + (i + 1) + " 次");
             byte[] bytes = new byte[1024 * 1024];
             m.put(i, bytes);
+            TimeUnit.MILLISECONDS.sleep(300);
         }
         System.out.println("finish oom..." + m.size());
     }
