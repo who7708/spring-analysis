@@ -11,7 +11,16 @@ import java.util.BitSet;
  */
 public class TestBitSet {
     public static void main(String[] args) {
-        BitSet set1 = new BitSet();
+        BitSet bs = new BitSet();
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10};
+        for (int num : nums) {
+            if (bs.get(num)) {
+                System.out.println(num);    //10
+                break;
+            } else {
+                bs.set(num);
+            }
+        }
 
         // for (int i = 0; i < 100; i++) {
         //     // String a = Integer.toBinaryString(i & 31);
@@ -25,7 +34,7 @@ public class TestBitSet {
         //     }
         // }
 
-        testBitmap(10000000);
+        // testBitmap(10000000);
     }
 
     /**
