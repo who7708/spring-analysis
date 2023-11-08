@@ -1,0 +1,3 @@
+curl -XPOST "localhost:8888/shorten?url=https://www.toutiao.com/article/7298910271823741481/?log_from=ad4efc33f5935_1699417979545"
+
+
