@@ -1,6 +1,8 @@
 package org.spring.boot.test.mist;
 
-import java.util.Random;
+import redis.clients.jedis.Jedis;
+
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
 /*
@@ -37,7 +39,7 @@ public class Mist {
     private static final AtomicLong increase = new AtomicLong(1L);
 
     // 生成的是伪随机数
-    private static final Random RANDOM = new Random();
+    // private static final Random RANDOM = new Random();
 
     private long generate() {
         long i = increase.incrementAndGet();
@@ -61,6 +63,7 @@ public class Mist {
         long bits;
         long val;
         do {
+            final ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
             bits = RANDOM.nextLong() >>> 1;
             val = bits % n;
         } while (bits - val + (n - 1) < 0);
@@ -69,13 +72,20 @@ public class Mist {
     }
 
     public static void main(String[] args) {
+        Jedis jedis = new Jedis("192.168.1.6", 6379);
+        jedis.auth("123456");
+        jedis.select(3);
         Mist mist = new Mist();
-        for (int i = 0; i < 100; i++) {
-            new Thread(() -> {
-                long generate = mist.generate();
-                System.out.println(generate);
-            }).start();
+        for (int i = 0; i < 100000; i++) {
+            // new Thread(() -> {
+            long generate = mist.generate();
+            // System.out.println(generate);
+            long exist = jedis.hsetnx("test_map", String.valueOf(generate), String.valueOf(generate));
+            if (exist == 0) {
+                System.out.println("generate 已存在 = " + generate);
+            }
+            // }).start();
         }
-        
+
     }
 }
