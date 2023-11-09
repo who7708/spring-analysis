@@ -1,8 +1,11 @@
 package org.spring.boot.test.mist;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Pipeline;
+import redis.clients.jedis.Response;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /*
@@ -71,21 +74,23 @@ public class Mist {
         return val;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Jedis jedis = new Jedis("192.168.1.6", 6379);
         jedis.auth("123456");
         jedis.select(3);
         Mist mist = new Mist();
+        Pipeline pipelined = jedis.pipelined();
         for (int i = 0; i < 100000; i++) {
             // new Thread(() -> {
             long generate = mist.generate();
             // System.out.println(generate);
-            long exist = jedis.hsetnx("test_map", String.valueOf(generate), String.valueOf(generate));
-            if (exist == 0) {
-                System.out.println("generate 已存在 = " + generate);
+            pipelined.hsetnx("test_map", String.valueOf(generate), String.valueOf(generate));
+            if (i % 999 == 0) {
+                pipelined.sync();
             }
             // }).start();
         }
-
+        pipelined.sync();
+        TimeUnit.SECONDS.sleep(5);
     }
 }
