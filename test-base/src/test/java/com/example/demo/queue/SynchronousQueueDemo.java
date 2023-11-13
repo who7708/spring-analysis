@@ -1,4 +1,4 @@
-package org.spring.boot.test.demo;
+package com.example.demo.queue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;

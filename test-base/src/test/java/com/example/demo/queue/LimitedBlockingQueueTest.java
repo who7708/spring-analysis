@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.queue;
 
 import org.junit.Test;
 import org.spring.utils.MusicUtils;

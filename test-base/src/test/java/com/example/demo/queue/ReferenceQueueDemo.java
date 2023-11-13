@@ -1,4 +1,4 @@
-package org.spring.boot.test.demo;
+package com.example.demo.queue;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
