@@ -14,5 +14,13 @@ public class NiuKeNC {
     public void test() throws Exception {
         System.out.println("===== test =====");
         // write code here
+        long begin = System.nanoTime();
+        int code = code();
+        System.out.printf("(System.nanoTime() - begin) = %d ns \n", (System.nanoTime() - begin));
+        System.out.println("code = " + code);
+    }
+
+    public int code() {
+        return 0;
     }
 }
