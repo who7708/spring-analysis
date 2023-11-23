@@ -24,16 +24,27 @@ public class TestRedisson {
         // 集群模式
         // config.useClusterServers().addNodeAddress("127.0.0.1:7004", "127.0.0.1:7001");
         // 2.根据 Config 创建出 RedissonClient 示例。
-        singleServerConfig.setAddress("redis://192.168.1.5:6379");
+        singleServerConfig.setAddress("redis://192.168.1.6:6379");
         singleServerConfig.setPassword("123456");
         RedissonClient redissonClient = Redisson.create(config);
-        RLock myLock = redissonClient.getLock("myLock");
-        if (myLock.tryLock()) {
-            System.out.println("加锁成功");
+        for (int i = 0; i < 3; i++) {
+            Thread thread = new Thread(() -> {
+                RLock myLock = redissonClient.getLock("myLock");
+                try {
+                    if (myLock.tryLock(100, TimeUnit.SECONDS)) {
+                        System.out.println("加锁成功");
+                    }
+                    TimeUnit.SECONDS.sleep(300);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    myLock.unlock();
+                }
+            });
+            thread.start();
         }
 
-        TimeUnit.SECONDS.sleep(5);
-        myLock.unlock();
+        TimeUnit.SECONDS.sleep(1000);
 
         // config.useMasterSlaveServers()
         //         .setMasterAddress()
