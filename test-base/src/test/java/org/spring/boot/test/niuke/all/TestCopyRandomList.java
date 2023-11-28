@@ -1,21 +1,73 @@
 package org.spring.boot.test.niuke.all;
 
-/*
- * To execute Java, please define "static void main" on a class
+/**
+ * <a href="https://leetcode.cn/problems/fu-za-lian-biao-de-fu-zhi-lcof/">...</a>
+ * 输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+ * 输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
  *
- * If you define many classes, but you must have a class named TestCopyRandomList and a public property.
- * The TestCopyRandomList class should be the only public class.
- * The TestCopyRandomList class must contain a static method (function) named "main"
- * Do not add any package, like "package main"
+ * 输入：head = [[1,1],[2,1]]
+ * 输出：[[1,1],[2,1]]
  *
- * The TestCase is shown below
- * Input : 1 2
- * Output : 3
+ * 输入：head = [[3,null],[3,0],[3,null]]
+ * 输出：[[3,null],[3,0],[3,null]]
  */
-
 class TestCopyRandomList {
     public static void main(String[] args) {
-        //
+        // 输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+        // 输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
+        {
+            Node node7 = new Node(7);
+            Node node13 = new Node(13);
+            Node node11 = new Node(11);
+            Node node10 = new Node(10);
+            Node node1 = new Node(1);
+            node7.next = node13;
+            node7.random = null;
+
+            node13.next = node11;
+            node13.random = node7;
+
+            node11.next = node10;
+            node11.random = node1;
+
+            node10.next = node1;
+            node10.random = node11;
+
+            node1.random = node7;
+
+            Node node = copyRandomList(node7);
+            System.out.println(node);
+        }
+
+        // 输入：head = [[1,1],[2,1]]
+        // 输出：[[1,1],[2,1]]
+        {
+            Node node1 = new Node(1);
+            Node node2 = new Node(2);
+
+            node1.next = node2;
+            node1.random = node2;
+
+            node2.random = node2;
+
+            Node node = copyRandomList(node1);
+            System.out.println(node);
+        }
+        // 输入：head = [[3,null],[3,0],[3,null]]
+        // 输出：[[3,null],[3,0],[3,null]]
+        {
+            Node node30 = new Node(3);
+            Node node31 = new Node(3);
+            Node node32 = new Node(3);
+
+            node30.next = node31;
+            node31.next = node32;
+
+            node31.random = node30;
+
+            Node node = copyRandomList(node30);
+            System.out.println(node);
+        }
     }
 
     public static Node copyRandomList(Node head) {
@@ -32,7 +84,7 @@ class TestCopyRandomList {
         }
 
         root = head;
-        while(root != null) {
+        while (root != null) {
             if (root.random != null) {
                 root.next.random = root.random.next;
             }
@@ -53,6 +105,7 @@ class TestCopyRandomList {
         return copyHead;
     }
 
+    // Definition for a Node.
     static class Node {
         int data;
 
@@ -62,6 +115,8 @@ class TestCopyRandomList {
 
         public Node(int data) {
             this.data = data;
+            this.next = null;
+            this.random = null;
         }
     }
 }
