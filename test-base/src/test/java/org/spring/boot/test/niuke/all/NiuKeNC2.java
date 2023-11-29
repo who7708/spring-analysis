@@ -6,6 +6,7 @@ import org.spring.boot.test.niuke.NiuKeUtils;
 
 /**
  * NC2 重排链表
+ * <a href="https://www.nowcoder.com/practice/3d281dc0b3704347846a110bf561ef6b?tpId=196&rp=1&ru=%2Fexam%2Foj&qru=%2Fexam%2Foj&sourceUrl=%2Fexam%2Foj&difficulty=&judgeStatus=&tags=&title=&dayCountBigMember=30%E5%A4%A9&gioEnter=menu">...</a>
  * 描述
  * 将给定的单链表L: L0->L1->...->Ln-1->Ln
  * 重新排序为：L0->Ln-1->L1->Ln-2->...
