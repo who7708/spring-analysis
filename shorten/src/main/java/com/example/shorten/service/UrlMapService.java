@@ -31,7 +31,9 @@ public class UrlMapService {
             public String load(String s) throws Exception {
                 long id = Base62Utils.shortKeyToId(s);
                 log.info("load cache: {}", s);
-                return Optional.ofNullable(urlMapDao.findOne(id))
+                // return Optional.ofNullable(urlMapDao.findOne(id))
+                //         .map(UrlMap::getLongUrl).orElse(null);
+                return urlMapDao.findById(id)
                         .map(UrlMap::getLongUrl).orElse(null);
             }
         };
