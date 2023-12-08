@@ -35,15 +35,10 @@ public class TestShowSessionController {
 
     @RequestMapping("/list")
     public List<ShowSession> showSessionList() {
-        return Lists.newArrayList(
-                ShowSession.builder().id(1).session("12月08日 周五 第一场").time("09:00-10:00").build(),
-                ShowSession.builder().id(2).session("12月11日 周一 第一场").time("14:00-16:00").build(),
-                ShowSession.builder().id(3).session("12月12日 周二 第一场").time("13:00-14:00").build(),
-                ShowSession.builder().id(4).session("12月13日 周三 第一场").time("10:00-11:00").build()
-        );
+        return showSessionListById(1);
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping("/list/{id}")
     public List<ShowSession> showSessionList(@PathVariable("id") int showId) {
         return showSessionListById(showId);
     }

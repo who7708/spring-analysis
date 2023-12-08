@@ -18,6 +18,12 @@ public interface ShowSessionApi {
     @RequestMapping(value = "/show/session/list", method = RequestMethod.GET)
     List<ShowSession> showSessionList();
 
-    @RequestMapping(value = "/show/session/{id}", method = RequestMethod.GET)
-    List<ShowSession> showSessionList(@PathVariable("id") int id);
+    /**
+     * 根据演出ID查询演出场次列表
+     *
+     * @param showId 演出ID
+     * @return 场次列表
+     */
+    @RequestMapping(value = "/show/session/list/{id}", method = RequestMethod.GET)
+    List<ShowSession> showSessionList(@PathVariable("id") int showId);
 }

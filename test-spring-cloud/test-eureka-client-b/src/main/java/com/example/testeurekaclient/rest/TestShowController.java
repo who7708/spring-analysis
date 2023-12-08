@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,16 +39,44 @@ public class TestShowController {
     private ShowSessionApi showSessionApi;
 
     @RequestMapping("/list")
-    public List<Show> showSessionList() {
+    public List<Show> showList() {
+        return getShowList(1);
+    }
 
-        // List<ShowSession> showSessionList = showSessionApi.showSessionList();
+    @RequestMapping("/list/{id}")
+    public List<Show> showList(@PathVariable("id") int organizerId) {
+        return getShowList(organizerId);
+    }
+
+    private List<Show> getShowList(int organizerId) {
+        if (organizerId == 1) {
+            return Lists.newArrayList(
+                    Show.builder().id(1).name("【上海】苏有朋「在多重宇宙中遇见你」巡回演唱会-上海站").address("上海市 | 浦发银行东方体育中心体育馆")
+                            .showSessionList(showSessionApi.showSessionList(1)).build(),
+                    Show.builder().id(2).name("【上海】杨乃文“MUSE缪斯”巡回演唱会-上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
+                            .showSessionList(showSessionApi.showSessionList(2)).build(),
+                    Show.builder().id(3).name("【上海】金玟岐2024“一起唱歌的夜晚”巡回演唱会—上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
+                            .showSessionList(showSessionApi.showSessionList(3)).build()
+            );
+        }
+
+        if (organizerId == 2) {
+            return Lists.newArrayList(
+                    Show.builder().id(4).name("【上海】苏有朋「在多重宇宙中遇见你」巡回演唱会-上海站").address("上海市 | 浦发银行东方体育中心体育馆")
+                            .showSessionList(showSessionApi.showSessionList(1)).build(),
+                    Show.builder().id(5).name("【上海】杨乃文“MUSE缪斯”巡回演唱会-上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
+                            .showSessionList(showSessionApi.showSessionList(2)).build(),
+                    Show.builder().id(6).name("【上海】金玟岐2024“一起唱歌的夜晚”巡回演唱会—上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
+                            .showSessionList(showSessionApi.showSessionList(3)).build()
+            );
+        }
 
         return Lists.newArrayList(
-                Show.builder().id(1).name("【上海】苏有朋「在多重宇宙中遇见你」巡回演唱会-上海站").address("上海市 | 浦发银行东方体育中心体育馆")
+                Show.builder().id(7).name("【上海】苏有朋「在多重宇宙中遇见你」巡回演唱会-上海站").address("上海市 | 浦发银行东方体育中心体育馆")
                         .showSessionList(showSessionApi.showSessionList(1)).build(),
-                Show.builder().id(2).name("【上海】杨乃文“MUSE缪斯”巡回演唱会-上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
+                Show.builder().id(8).name("【上海】杨乃文“MUSE缪斯”巡回演唱会-上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
                         .showSessionList(showSessionApi.showSessionList(2)).build(),
-                Show.builder().id(3).name("【上海】金玟岐2024“一起唱歌的夜晚”巡回演唱会—上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
+                Show.builder().id(9).name("【上海】金玟岐2024“一起唱歌的夜晚”巡回演唱会—上海站").address("上海市 | 国家会展中心(上海)虹馆EH")
                         .showSessionList(showSessionApi.showSessionList(3)).build()
         );
     }
