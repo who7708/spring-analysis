@@ -1,6 +1,11 @@
 package com.example.openfegin.api;
 
+import com.example.openfegin.model.Organizer;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @author Chris
@@ -9,4 +14,9 @@ import org.springframework.cloud.openfeign.FeignClient;
  */
 @FeignClient("test-eureka-client-a")
 public interface OrganizerApi {
+    @RequestMapping("/organizer/list")
+    List<Organizer> organizerList();
+
+    @RequestMapping("/organizer/detail/{id}")
+    Organizer organizerList(@PathVariable("id") int organizerId);
 }
