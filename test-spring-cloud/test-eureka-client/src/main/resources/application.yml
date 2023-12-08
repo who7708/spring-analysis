@@ -1,0 +1,7 @@
+#eureka:
+##  instance:
+##    statusPageUrlPath: ${server.servletPath}/info
+##    healthCheckUrlPath: ${server.servletPath}/health
+#  client:
+#    health-check:
+#      enabled: true
