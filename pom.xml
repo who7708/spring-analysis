@@ -5,7 +5,7 @@
     <artifactId>all-in-one</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>spring Maven Webapp</name>
+    <name>all-in-one</name>
     <url>http://maven.apache.org</url>
 
 
@@ -17,14 +17,18 @@
         <module>test-nacos</module>
         <module>test-rocketmq</module>
         <module>shorten</module>
+        <module>test-mybatis-plus</module>
+        <module>test-spring-cloud</module>
     </modules>
 
     <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-version>4.3.18.RELEASE</spring-version>
         <!--<spring.boot-version>1.5.22.RELEASE</spring.boot-version>-->
         <!--<spring.boot-version>2.3.12.RELEASE</spring.boot-version>-->
-        <spring.boot-version>2.5.15</spring.boot-version>
+        <spring.boot-version>2.1.6.RELEASE</spring.boot-version>
         <!--<spring.boot-version>2.6.15</spring.boot-version>-->
         <!--<spring.boot-version>2.7.18</spring.boot-version>-->
         <!--<spring-version>4.3.30.RELEASE</spring-version>-->
