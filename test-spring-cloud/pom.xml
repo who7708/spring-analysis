@@ -15,6 +15,9 @@
     <modules>
         <module>test-eureka-server</module>
         <module>test-eureka-client</module>
+        <module>test-eureka-client-a</module>
+        <module>test-eureka-client-b</module>
+        <module>test-eureka-client-c</module>
         <module>demo</module>
     </modules>
 
