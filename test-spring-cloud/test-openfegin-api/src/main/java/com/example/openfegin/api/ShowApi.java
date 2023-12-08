@@ -15,7 +15,7 @@ import java.util.List;
 @FeignClient("test-eureka-client-b")
 public interface ShowApi {
     @RequestMapping("/show/list")
-    List<Show> showSessionList();
+    List<Show> showList();
 
     /**
      * 根据主办方ID查询演出列表
@@ -24,5 +24,5 @@ public interface ShowApi {
      * @return 演出列表
      */
     @RequestMapping("/show/list/{id}")
-    List<Show> showSessionList(@PathVariable("id") int organizerId);
+    List<Show> showList(@PathVariable("id") int organizerId);
 }
